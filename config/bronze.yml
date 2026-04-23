@@ -1,0 +1,9 @@
+tables:
+  - name: "combined_flights"
+    pattern: "Combined_Flights_*.csv"
+    partition_by: ["Year", "Operating_Airline"]
+  - name: "airlines"
+    pattern: "Airlines.csv"
+    partition_by: []
+local_path: "Flight-Delay/data"
+gcs_path: "gs://flight-delay-de/bronze"

@@ -1,0 +1,13 @@
+silver:
+  bronze_path: "/flight_delay/bronze"
+  silver_path: "/flight_delay/silver"
+  tables:
+    - combined_flights:
+        filters: 
+            - "(Cancelled == false AND DepDelayMinutes IS NOT NULL) OR (Cancelled == true AND DepDelayMinutes IS NULL)"
+        partition_by: ["Year"]
+    - airlines:
+        drop_nulls: ["Code"]
+gcp:
+    gcs_input: "gs://flight-delay-de/bronze"
+    gcs_output: "gs://flight-delay-de/silver"

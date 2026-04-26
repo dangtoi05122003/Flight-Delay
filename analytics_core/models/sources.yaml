@@ -1,0 +1,19 @@
+version: 2
+sources:
+  - name: flight_delay
+    tables:
+      - name: silver_combined_flights
+        external:
+          location: 'gs://flight-delay-de/silver/combined_flights/Year=*'
+          partitions:
+            - name: Year
+              data_type: string
+              path_source: hive
+          options:
+            format: parquet
+            hive_partition_uri_prefix: 'gs://flight-delay-de/silver/combined_flights'
+      - name: silver_airlines
+        external:
+          location: 'gs://flight-delay-de/silver/airlines/*.parquet'
+          options:
+            format: parquet

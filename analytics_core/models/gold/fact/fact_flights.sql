@@ -2,7 +2,8 @@ WITH base AS (
     SELECT
         CAST(Year AS INT64) AS Year,
         CAST(Month AS INT64) AS Month,
-        CAST(Airline AS STRING) AS airline_code,
+        CAST(Airline AS STRING) AS airline,
+        CAST(Operating_Airline AS STRING) AS airline_code,
         CAST(Origin AS STRING) AS origin_airport,
         CAST(Dest AS STRING) AS dest_airport,
         CAST(Distance AS FLOAT64) AS distance,
